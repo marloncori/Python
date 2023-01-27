@@ -1,0 +1,54 @@
+
+        body {
+            background-image: url("images/gifts.png");
+            background-size: cover;
+        }
+
+        #loading-overlay {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          z-index: 999;
+        }
+        #download-button {
+         display: none;
+        }
+
+        #spinner {
+         animation: spinner-rotate 2s linear infinite;
+        }
+
+        @keyframes spinner-rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /*
+        .dot {
+  width: 8px;
+  height: 8px;
+  background-color: #333;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 0 2px;
+  animation: jump 1s ease-in-out infinite;
+}
+
+@keyframes jump {
+  50% {
+    transform: translateY(-6px);
+    background-color: #666;
+  }
+  100% {
+    transform: translateY(0);
+    background-color: #999;
+  }
+}
+
+        */

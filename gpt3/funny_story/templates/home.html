@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funny Story Generator</title>
+    <!-- Import Tailwind CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css">
+    <!-- Import Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        #ring .spinner {
+         animation: spinner-rotate 2s linear infinite;
+        }
+
+        @keyframes spinner-rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-200">
+    <!-- Add a loading overlay. Javascript code handles this part -->
+    <div id="loading" class="hidden flex items-center justify-center fixed top-0 left-0 right-0 bottom-0 bg-gray-200 opacity-75 z-50">
+        <div id="ring" class="spinner border-4 border-gray-600 h-12 w-12 rounded-full"></div>
+        <p class="text-gray-700 text-xl ml-2"> Writing story...</p>
+    </div>
+    <!-- Add a funny background image -->
+    <div class="bg-gray-200 bg-cover bg-center" style="background-image: url('../static/images/emojis3.png')">
+        <div class="container mx-auto py-16 px-6">
+            <h1 class="text-4xl font-bold text-center text-gray-800">Funny Story Generator</h1>
+            <form action="/generate" method="post" class="mx-auto max-w-md mt-12">
+                <div class="mb-4">
+                    <label for="name" class="block font-bold text-gray-700 mb-2">Name</label>
+                    <input type="text" name="name" id="name" class="block w-full px-4 py-2 rounded-lg shadow-lg focus:outline-none focus:shadow-outline">
+                </div>
+                <div class="mb-4">
+                    <label for="age" class="block font-bold text-gray-700 mb-2">Age</label>
+                    <input type="number" name="age" id="age" class="block w-full px-4 py-2 rounded-lg shadow-lg focus:outline-none focus:shadow-outline">
+                </div>
+                <div class="mb-4">
+                    <label for="nationality" class="block font-bold text-gray-700 mb-2">Nationality</label>
+                    <input type="text" name="nationality" id="nationality" class="block w-full px-4 py-2 rounded-lg
+shadow-lg focus:outline-none focus:shadow-outline">
+                </div>
+                <div class="mb-4">
+                    <label for="living_country" class="block font-bold text-gray-700 mb-2">Living Country</label>
+                    <input type="text" name="living_country" id="living_country" class="block w-full px-4 py-2 rounded-lg shadow-lg focus:outline-none focus:shadow-outline">
+                </div>
+                <div class="mb-4">
+                    <label for="hobbies" class="block font-bold text-gray-700 mb-2">Hobbies</label>
+                    <input type="text" name="hobbies" id="hobbies" class="block w-full px-4 py-2 rounded-lg shadow-lg focus:outline-none focus:shadow-outline">
+                </div>
+                <div class="mb-4">
+                    <label for="strange_word" class="block font-bold text-gray-700 mb-2">Strange Word</label>
+                    <input type="text" name="strange_word" id="strange_word" class="block w-full px-4 py-2 rounded-lg shadow-lg focus:outline-none focus:shadow-outline">
+                </div>
+                <div class="mb-4">
+                    <label for="strange_object" class="block font-bold text-gray-700 mb-2">Strange Object</label>
+                    <input type="text" name="strange_object" id="strange_object" class="block w-full px-4 py-2 rounded-lg shadow-lg focus:outline-none focus:shadow-outline">
+                </div>
+                <div class="mb-4">
+                    <label for="strange_habit" class="block font-bold text-gray-700 mb-2">Strange Habit</label>
+                    <input type="text" name="strange_habit" id="strange_habit" class="block w-full px-4 py-2 rounded-lg shadow-lg focus:outline-none focus:shadow-outline">
+                </div>
+                <div class="mb-4">
+                    <label for="story_language" class="block font-bold text-gray-700 mb-2">Story Language</label>
+                    <select name="story_language" id="story_language" class="block w-full px-4 py-2 rounded-lg shadow-lg focus:outline-none focus:shadow-outline">
+                        <option value="english">English</option>
+                        <option value="french">French</option>
+                        <option value="spanish">Spanish</option>
+                    </select>
+                </div>
+                <div class="flex items-center justify-center">
+                    <button type="submit" class="px-6 py-3 rounded-lg bg-gray-800 text-gray-100 font-bold shadow-lg hover:bg-gray-700 focus:outline-none focus:shadow-outline">
+                        Generate Story
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        const form = document.querySelector('form');
+        const loading = document.querySelector('#loading');
+      
+        form.addEventListener('submit', (event) => {
+          event.preventDefault();
+          loading.classList.remove('hidden');
+      
+          const formData = new FormData(form);
+          fetch('/generate', {
+            method: 'POST',
+            body: formData
+          })
+            .then((response) => response.text())
+            .then((text) => {
+              loading.classList.add('hidden');
+              window.location.href = '/result';
+
+            });
+        });
+      </script>      
+</body>
+</html>

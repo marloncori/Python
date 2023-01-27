@@ -1,0 +1,52 @@
+<!-- index.html -->
+
+<html>
+  <head>
+    <!-- Add Bootstrap CSS and JS files -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <!-- Add a Bootstrap container to center the form -->
+    <div class="container mt-5">
+      <form method="get" action="/myapp/sort/">
+        <!-- Use Bootstrap form groups to add some padding and spacing -->
+        <div class="form-group">
+          <label for="arr">Enter a list of integers separated by commas:</label>
+          <input type="text" class="form-control" id="arr" name="arr">
+        </div>
+        <div class="form-group">
+          <label for="algorithm">Select an algorithm:</label>
+          <select class="form-control" id="algorithm" name="algorithm">
+            <option value="quick">Quick Sort</option>
+            <option value="merge">Merge Sort</option>
+            <option value="shell">Shell Sort</option>
+            <option value="radix">Radix Sort</option>
+            <option value="bucket">Bucket Sort</option>
+            <option value="insert">Insert Sort</option>
+          </select>
+        </div>
+        <!-- Use a Bootstrap button to style the submit button -->
+        <button type="submit" class="btn btn-primary mr-3">Sort</button>
+        <!-- Add a "Randomize" button -->
+        <button type="button" class="btn btn-secondary" onclick="randomize()">Randomize</button>
+      </form>
+    </div>
+
+    <!-- Add a JavaScript function to validate the input and generate a random list of integers -->
+    <script>
+      function randomize() {
+        // Get the input element and select element
+        const arrInput = document.getElementById('arr');
+        const algorithmSelect = document.getElementById('algorithm');
+        // Generate a random list of integers
+        const arr = [...new Array(10)].map(() => Math.floor(Math.random() * 100));
+        // Set the value of the input element to the random list of integers
+        arrInput.value = arr.join(',');
+        // Set the value of the select element to the first option (Quick Sort)
+        algorithmSelect.value = 'quick';
+      }
+    </script>
+
+  </body>
+</html>

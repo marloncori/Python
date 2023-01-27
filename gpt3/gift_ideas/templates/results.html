@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gift Idea Generator</title>
+    <!-- Load Tailwind CSS -->
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Load Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+    <!-- Add a background image -->
+    <style>
+        body {
+            background-image: url("../static/images/gifts.png");
+            background-size: cover;
+        }
+    </style>
+</head>
+<body id="results" class="bg-gray-100 h-screen flex items-center justify-center">
+    <div class="w-full max-w-xs">
+        <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">            
+            <div class="mb-3">
+                <h2 class="text-gray-700 text-center text-lg font-bold mb-1"> HERE YOU ARE 10 GIFT IDEAS: </h2>
+            </div>
+
+         {% set gift_ideas = session.gift_ideas %}
+         <div class="mb-4">
+             <!-- Create an ol element -->
+            <ol id="gift-ideas">
+             <!-- Display the gift ideas -->
+             {% for gift_idea in gift_ideas %}
+                <!-- Create an li element -->
+                <li class="block text-gray-700 text-sm font-bold mb-2">{{ gift_idea }}</li>
+                <br\>
+            {% endfor %}
+            </ol>
+        </div>
+
+    <div class="flex items-center justify-between">
+        <button id="generate-button" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+            <i class="fa fa-gift" aria-hidden="true"></i> Generate New Gift Ideas
+        </button>
+        <button id="download-button" class="bg-gray-300 hover:bg-gray-400 text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" disabled>
+          <i class="fas fa-download"></i> Download
+        </button>
+    </div>
+<!-- Display the generated gift ideas -->
+<!-- Display the generated gift ideas -->
+   <div id="gift-ideas" class="mt-4 flex flex-col items-center justify-center text-center text-gray-700">
+     <div id="loading" class="text-2xl font-bold mb-4">
+         <i class="fas fa-spinner fa-pulse"></i> Loading...
+     </div>
+   </div>
+ </form>
+</div>
+<!-- Load jQuery and the Flask app's JavaScript -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="./static/app.js"></script>
+</body>
+</html>

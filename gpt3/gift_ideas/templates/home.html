@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gift Idea Generator</title>
+    <!-- Load Tailwind CSS -->
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Load Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+    <!-- Add a background image -->
+    <link rel="stylesheet" href="../static/home.css" >
+</head>
+<body id="home" class="bg-gray-100 h-screen flex items-center justify-center">
+    <!-- Loading overlay 
+    <div id="loading-overlay" class="hidden flex items-center justify-center text-lg p-4 bg-green-100 text-green-600">
+  <div class="dot"></div>
+  <div class="dot"></div>
+  <div class="dot"></div>
+  Generating ideas...
+</div>
+    -->
+
+    <div id="loading-overlay" class="hidden flex items-center justify-center text-lg p-4 bg-green-100 text-green-600">
+        <div class="flex items-center">
+          <div id="spinner" class="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full m-12" role="status"></div>
+              Generating ideas...
+          </div>
+    </div>
+    <div class="w-full max-w-xs">
+        <!-- Form for entering data about the person -->
+        <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+            <div class="mb-3">
+                <h2 class="text-gray-700 text-center text-lg font-bold mb-1"> GIFT IDEA GENERATOR </h2>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
+                    Name
+                </label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="name" name="name" type="text" placeholder="John">
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="age">
+                    Age
+                </label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="age" type="number" placeholder="30">
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="gender">
+                    Gender
+                </label>
+                <div class="flex items-center py-2 px-3 text-gray-700 leading-tight">
+                    <input class="form-radio" type="radio" id="male" name="gender" value="male">
+                    <label class="pl-3 mr-8" for="male">Male</label>
+                    <input class="form-radio" type="radio" id="female" name="gender" value="female">
+                    <label class="pl-3" for="male">Female</label>
+                </div>
+    <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="marital_status">
+            Marital Status
+        </label>
+        <select class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline" id="marital_status">
+            <option>Single</option>
+            <option>Married</option>
+            <option>Divorced</option>
+            <option>Widowed</option>
+        </select>
+    </div>
+    <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="has_children">
+          Has Children
+        </label>
+        <div class="flex items-center py-2 px-3 text-gray-700 leading-tight">
+             <input class="form-radio" type="radio" id="yes" name="has_children" value="yes">
+         <label class="pl-3 mr-8" for="yes">Yes</label>
+            <input class="form-radio" type="radio" id="no" name="has_children" value="no">
+         <label class="pl-3" for="no">No</label>
+        </div>
+    </div>
+    <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="profession">
+            Profession
+        </label>
+        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="profession" type="text" placeholder="Software Developer">
+    </div>
+    <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="area_of_interest">
+            Area of Interest
+        </label>
+        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="area_of_interest" type="text" placeholder="Technology">
+    </div>  
+    <div class="flex items-center justify-between">
+        <button id="generate-button" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+            Generate Gift Ideas
+        </button>
+        <button id="download-button" class="bg-gray-300 hover:bg-gray-400 text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" disabled>
+            <i class="fas fa-download"></i> Download
+        </button>
+    </div>
+    <!-- Display the generated gift ideas -->
+    <!-- Display the generated gift ideas -->
+    <div id="gift-ideas" class="mt-4 flex flex-col items-center justify-center text-center text-gray-700">
+        <div id="loading" class="text-2xl font-bold mb-4">
+            <i class="fas fa-spinner fa-pulse"></i> Loading...
+        </div>
+    </div>
+ </form>
+</div>
+        <!-- Load jQuery and the Flask app's JavaScript -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="./static/app.js"></script>
+    </body>
+</html>
